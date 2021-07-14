@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="MenuItemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 1-Komodo CafePOCO\Challenge 1-Komodo CafePOCO.csproj">
+      <Project>{17075570-A5C9-4724-84EF-2B6D8357DC7F}</Project>
+      <Name>Challenge 1-Komodo CafePOCO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

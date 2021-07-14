@@ -1,0 +1,10 @@
+﻿Build started...
+1>------ Build started: Project: Challenge 1-Komodo Cafe Console, Configuration: Debug Any CPU ------
+1>  Challenge 1-Komodo Cafe Console -> C:\Users\msang\OneDrive\Desktop\ElevenFiftyProjects\Assignments\Gold Badge Final\Gold Badge Final\bin\Debug\Gold Badge Final.exe
+2>------ Build started: Project: Challenge 1-Komodo CafePOCO, Configuration: Debug Any CPU ------
+2>  Challenge 1-Komodo CafePOCO -> C:\Users\msang\OneDrive\Desktop\ElevenFiftyProjects\Assignments\Gold Badge Final\Challenge 1-Komodo CafePOCO\bin\Debug\Challenge 1-Komodo CafePOCO.dll
+3>------ Build started: Project: Challenge 1-Komodo CafeRepository, Configuration: Debug Any CPU ------
+3>  Challenge 1-Komodo CafeRepository -> C:\Users\msang\OneDrive\Desktop\ElevenFiftyProjects\Assignments\Gold Badge Final\Challenge 1-Komodo CafeRepository\bin\Debug\Challenge 1-Komodo CafeRepository.dll
+4>------ Build started: Project: Challenge 1-Komodo CafeUnitTest, Configuration: Debug Any CPU ------
+4>  Challenge 1-Komodo CafeUnitTest -> C:\Users\msang\OneDrive\Desktop\ElevenFiftyProjects\Assignments\Gold Badge Final\Challenge 1-Komodo CafeUnitTest\bin\Debug\Challenge 1-Komodo CafeUnitTest.dll
+========== Build: 4 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

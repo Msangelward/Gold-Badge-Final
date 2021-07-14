@@ -49,11 +49,26 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="MenuItemTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MenuItemRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 1-Komodo CafePOCO\Challenge 1-Komodo CafePOCO.csproj">
+      <Project>{17075570-A5C9-4724-84EF-2B6D8357DC7F}</Project>
+      <Name>Challenge 1-Komodo CafePOCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Challenge 1-Komodo CafeRepository\Challenge 1-Komodo CafeRepository.csproj">
+      <Project>{4990f69e-a0e7-4dc6-abd1-bd783a28c54d}</Project>
+      <Name>Challenge 1-Komodo CafeRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gold Badge Final\Challenge 1-Komodo Cafe Console.csproj">
+      <Project>{7f5da6a6-6dd6-4383-8232-12245eac5ae5}</Project>
+      <Name>Challenge 1-Komodo Cafe Console</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge 1-Komodo Cafe", "Gold Badge Final\Challenge 1-Komodo Cafe.csproj", "{7F5DA6A6-6DD6-4383-8232-12245EAC5AE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge 1-Komodo Cafe Console", "Gold Badge Final\Challenge 1-Komodo Cafe Console.csproj", "{7F5DA6A6-6DD6-4383-8232-12245EAC5AE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge 1-Komodo CafePOCO", "Challenge 1-Komodo CafePOCO\Challenge 1-Komodo CafePOCO.csproj", "{17075570-A5C9-4724-84EF-2B6D8357DC7F}"
 EndProject

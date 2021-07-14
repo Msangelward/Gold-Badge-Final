@@ -10,6 +10,8 @@ namespace Gold_Badge_Final
     {
         static void Main(string[] args)
         {
+            ProgramUI program = new ProgramUI();
+            program.Run();
         }
     }
 }

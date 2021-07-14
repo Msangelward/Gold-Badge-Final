@@ -9,6 +9,8 @@ namespace Challenge_3_Komodo_Insurance_BadgesUnitTest
         [TestMethod]
         public void TestMethod1()
         {
+            //don't need to test constructors or objects,
+            //just test your methods
         }
     }
 }
