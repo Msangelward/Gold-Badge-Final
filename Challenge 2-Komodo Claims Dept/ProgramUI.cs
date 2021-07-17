@@ -203,9 +203,9 @@ namespace Challenge_2_Komodo_Claims_Dept
 
         private void SeedList()
         {
-            Claim claim1 = new Claim(1, Claim.ClaimType.Car, "Frontend Collision", 4000, DateTime.Parse(2021 / 03 / 02), DateTime.Parse(2020 / 02 / 27), true);
-            Claim claim2 = new Claim(21, Claim.ClaimType.Home, "Hail Damange on Roof", 9000, DateTime.Parse(2020 / 12 / 25), DateTime.Parse(2020 / 12 / 27), true);
-            Claim claim3 = new Claim(56, Claim.ClaimType.Car, "BreakIn, Driver Side Door", 1200, DateTime.Parse(2021 / 01 / 02), DateTime.Parse(2021 / 02 / 15), false);
+            Claim claim1 = new Claim(1, Claim.ClaimType.Car, "Frontend Collision", 4000, DateTime.Parse("2021 / 03 / 02"), DateTime.Parse("2020 / 02 / 27"), true);
+            Claim claim2 = new Claim(21, Claim.ClaimType.Home, "Hail Damange on Roof", 9000, DateTime.Parse("2020 / 12 / 25"), DateTime.Parse("2020 / 12 / 27"), true);
+            Claim claim3 = new Claim(56, Claim.ClaimType.Car, "BreakIn, Driver Side Door", 1200, DateTime.Parse("2021 / 01 / 02"), DateTime.Parse("2021 / 02 / 15"), false);
 
             _claimRepo.AddClaimToList(claim1);
             _claimRepo.AddClaimToList(claim2);

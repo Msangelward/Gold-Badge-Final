@@ -18,7 +18,7 @@ namespace Challenge_2_Komodo_Claims_DeptUnitTest
         {
             _repo = new ClaimsRepository();
 
-            _claim = new Claim(23, ClaimType.Car, "Rearended", 4000, DateTime.Parse("2021/01/01"), true);
+            _claim = new Claim(23, ClaimType.Car, "Rearended", 4000, DateTime.Parse("2021/01/01"), DateTime.Parse("2021/01/07"), true);
             _repo.AddClaimToList(_claim);
         }
 
@@ -44,7 +44,7 @@ namespace Challenge_2_Komodo_Claims_DeptUnitTest
         [TestMethod]
         public void Update_ShouldReturnTrue()
         {
-            Claim newClaim = new Claim(34, ClaimType.Car, "Front Collision", 6000, DateTime.Parse("2021/06/14"), true);
+            Claim newClaim = new Claim(34, ClaimType.Car, "Front Collision", 6000, DateTime.Parse("2021/06/14"), DateTime.Parse("2021/06/28"),true);
             bool shouldUpdate = _repo.UpdateExistingClaim(2, newClaim);
 
             Assert.IsTrue(shouldUpdate);
@@ -60,7 +60,7 @@ namespace Challenge_2_Komodo_Claims_DeptUnitTest
         [TestMethod]
         public void Helper_ShouldGetNotNull()
         {
-            Claim claim = new Claim(23, ClaimType.Car, "Rarended", 4000, DateTime.Parse("2021/01/01"), true);
+            Claim claim = new Claim(23, ClaimType.Car, "Rarended", 4000, DateTime.Parse("2021/01/01"), DateTime.Parse("2021/01/07"), true);
             _repo.GetClaimByClaimID(1);
 
             Assert.IsNotNull(claim);
