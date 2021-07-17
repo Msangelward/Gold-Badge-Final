@@ -10,6 +10,8 @@ namespace Challenge_3_Komodo_Insurance_Badges
     {
         static void Main(string[] args)
         {
+            ProgramUI program = new ProgramUI();
+            program.Run();
         }
     }
 }

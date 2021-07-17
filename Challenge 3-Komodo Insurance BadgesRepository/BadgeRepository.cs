@@ -69,7 +69,7 @@ namespace Challenge_3_Komodo_Insurance_BadgesRepository
 
         }
         //Delete
-        public bool RemoveDoorsFromBadge(int badgeID, string nameOfDoor)
+        public bool RemoveDoorsFromBadge(int badgeID)
         {
             Badge badge = GetBadgeByID(badgeID);
             if (badge == null)
@@ -82,7 +82,6 @@ namespace Challenge_3_Komodo_Insurance_BadgesRepository
             }
 
             int initialCount = _listOfBadges.Count;
-            _listOfBadges.Remove(badge);
 
             if (initialCount > _listOfBadges.Count)
             {

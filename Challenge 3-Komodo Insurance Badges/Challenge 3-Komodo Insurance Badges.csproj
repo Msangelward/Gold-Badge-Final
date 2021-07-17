@@ -50,5 +50,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 3-Komodo Insurance BadgesPOCO\Challenge 3-Komodo Insurance BadgesPOCO.csproj">
+      <Project>{C0371935-8506-4E09-BDE0-497456B51A0A}</Project>
+      <Name>Challenge 3-Komodo Insurance BadgesPOCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Challenge 3-Komodo Insurance BadgesRepository\Challenge 3-Komodo Insurance BadgesRepository.csproj">
+      <Project>{25564c36-f257-44f0-8fc4-6cae73cadd74}</Project>
+      <Name>Challenge 3-Komodo Insurance BadgesRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
