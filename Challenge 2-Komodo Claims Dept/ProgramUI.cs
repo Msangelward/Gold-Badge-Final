@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Challenge_2_Komodo_Claims_DeptPOCO.Claim;
 
 namespace Challenge_2_Komodo_Claims_Dept
 {
@@ -16,6 +17,7 @@ namespace Challenge_2_Komodo_Claims_Dept
 
         public void Run()
         {
+            SeedList();
             Menu();
         }
 
@@ -89,7 +91,7 @@ namespace Challenge_2_Komodo_Claims_Dept
                     "2. Home\n" +
                     "3. Theft");
             string claimTypeAsString = Console.ReadLine();
-            newClaim.TypeOfClaim = int.Parse(claimTypeAsString);
+            newClaim.TypeOfClaim = (ClaimType)int.Parse(claimTypeAsString);
                       
 
             //Description
@@ -98,6 +100,7 @@ namespace Challenge_2_Komodo_Claims_Dept
 
             //ClaimAmount
             Console.WriteLine("Enter Amount of Claim");
+            newClaim.ClaimAmount = int.Parse(Console.ReadLine());
 
             //Date of Incident
             bool dateOfIncident = false;
@@ -160,12 +163,12 @@ namespace Challenge_2_Komodo_Claims_Dept
             string[] headerColumns = { "Claim ID", "Claim Type", "Claim Description", "Claim Amount", "Date of Incident", "Date of Claim", "IsValidClaim" };
             Console.WriteLine("{0,10} {1,20} {2,30} {4,40} {5,25} {6, 35}", headerColumns[0], headerColumns[1], headerColumns[2], headerColumns[3], headerColumns[4], headerColumns[5], headerColumns[6] );
 
-            foreach (var claim in _claimRepo)
+            foreach (var claim in claims)
             {
                 int claimID = claim.ClaimID;
                 Claim.ClaimType type = claim.TypeOfClaim;
                 string description = claim.Description;
-                decimal amountOfClaim = claim.ClaimAmount;
+                double amountOfClaim = claim.ClaimAmount;
                 DateTime dateOfIncident = claim.DateOfIncident;
                 DateTime dateOfClaim = claim.DateOfClaim;
                 bool isValid = claim.IsValid;
