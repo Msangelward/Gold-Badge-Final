@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClaimsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 2-Komodo Claims DeptPOCO\Challenge 2-Komodo Claims DeptPOCO.csproj">
+      <Project>{285ae8f9-fc9a-4143-8d6a-9f1f86288030}</Project>
+      <Name>Challenge 2-Komodo Claims DeptPOCO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

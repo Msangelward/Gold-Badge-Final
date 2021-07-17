@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BadgeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 3-Komodo Insurance BadgesPOCO\Challenge 3-Komodo Insurance BadgesPOCO.csproj">
+      <Project>{c0371935-8506-4e09-bde0-497456b51a0a}</Project>
+      <Name>Challenge 3-Komodo Insurance BadgesPOCO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
