@@ -59,18 +59,14 @@ namespace Challenge_3_Komodo_Insurance_Badges
                         DisplayAllBadges();
                         break;
                     case "3":
-                        //View Badge by BadgeID
-                        DisplayBadgeByBadgeID();
-                        break;
-                    case "4":
-                        //Update Existing Badge
+                        //Update Badge by BadgeID
                         UpdateExistingBadge();
                         break;
-                    case "5":
+                    case "4":
                         //Delete Existing Badge
                         DeleteExistingBadge();
                         break;
-                    case "6":
+                    case "5":
                         //Exit
                         Console.WriteLine("Badge List now complete. Go forth, and conquer!");
                         keepRunning = false;
@@ -83,43 +79,45 @@ namespace Challenge_3_Komodo_Insurance_Badges
 
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
-       }
-            //Create new Badge
-            private void CreateNewBadge()
-            {
-                Console.Clear();
-                Badge newBadge = new Badge();
-
-                //ClaimID
-                Console.WriteLine("Enter BadgeID Number:");
-                string badgeIDAsString = Console.ReadLine();
-                newBadge.BadgeID = int.Parse(badgeIDAsString);
-
-                //List of doors to be added
-                List<string> nameOfDoor = new List<string>();
-                bool isDone = true;
-                do
-                {
-                    Console.WriteLine("List a door that it needs access to or 'done' if there are no more doors to be added:");
-                    var access = Console.ReadLine();
-                    if (nameOfDoor.ToLower() != "done")
-                    {
-                        listOfDoors.Add(nameOfDoor);
-                        Console.WriteLine("Door added to List");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                        continue;
-                    }
-                    isDone = false;
-                } while (isDone);
-                Console.WriteLine("List of doors now complete.");
-
-
-                newBadge.AccessibleDoors = listOfDoors;
-          
-                _badgeRepo.AddNewBadgeToList(newBadge);
-                Console.WriteLine("Badge now Added.");
             }
+       }
+        //Create new Badge
+        private void CreateNewBadge()
+        {
+            Console.Clear();
+            Badge newBadge = new Badge();
+
+            //BadgeID
+            Console.WriteLine("Enter BadgeID:");
+            string badgeIDAsString = Console.ReadLine();
+            newBadge.BadgeID = int.Parse(badgeIDAsString);
+
+            //List of Doors  new List<string>()
+            List<string> listOfDoors = new List<string>();
+            bool isDone = true;
+            do
+            {
+                Console.WriteLine("Enter Door or 'done' if there are no more doors to be added:");
+                var accessibledoor = Console.ReadLine();
+                if (accessibledoor.ToLower() != "done")
+                {
+                    listOfDoors.Add(accessibledoor);
+                    Console.WriteLine("Doors added to List");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    continue;
+                }
+                isDone = false;
+            } while (isDone);
+            Console.WriteLine("Doors list now complete.");
+
+
+            newBadge.AccessibleDoors = listOfDoors;
+
+            _badgeRepo.AddNewBadgeToList(newBadge);
+            Console.WriteLine("Badge now Added.");
+            }
+
 
             //View All Badges
             private void DisplayAllBadges()
@@ -134,33 +132,7 @@ namespace Challenge_3_Komodo_Insurance_Badges
 
                 }
             }
-            //View Badge by BadgeID
-            private void DisplayBadgeByBadgeID()
-            {
-                Console.Clear();
-                Badge newBadge = new Badge();
-                //Prompt the user to give me a badgeID
-                Console.WriteLine("Enter the BadgeID you'd like to view:");
-
-                //Get the user's input
-                string badgeIDAsString = Console.ReadLine();
-                newBadge.BadgeID = int.Parse(badgeIDAsString);
-
-                //Find the Badge by that BadgeID
-                Badge badge = _badgeRepo.GetBadgeByID(badgeID);
-
-                //Display said Badge if it isn't null
-                if (badge != null)
-                {
-                    Console.WriteLine($"BadgeID: {badge.BadgeID}\n" +
-                        $"List of Ingredients: {badge.listOfDoors}");
-                }
-                else
-                {
-                    Console.WriteLine("No meal name found.");
-                }
-            }
-
+    
             //Update Menu Item
             private void UpdateExistingBadge()
             {
@@ -183,7 +155,7 @@ namespace Challenge_3_Komodo_Insurance_Badges
                 newBadge.BadgeID = int.Parse(badgeIDAsString);
 
                 //Verify the update worked
-                bool wasUpdated = _badgeRepo.UpdateExistingBadge(oldBadge, newBadge);
+                bool wasUpdated = _badgeRepo.UpdateExistingBadge(int.Parse(oldBadge), newBadge);
 
                 if (wasUpdated)
                 {
@@ -207,7 +179,7 @@ namespace Challenge_3_Komodo_Insurance_Badges
 
                 //Call the delete method
                 
-                bool wasDeleted = _badgeRepo.RemoveDoorsFromBadge(string.Parse(input));
+                bool wasDeleted = _badgeRepo.RemoveDoorsFromBadge(int.Parse(input));
 
                 //If the content was deleted, say so
                 //Otherwise state it could not be deleted

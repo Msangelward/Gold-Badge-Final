@@ -50,5 +50,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge 2-Komodo Claims DeptPOCO\Challenge 2-Komodo Claims DeptPOCO.csproj">
+      <Project>{285AE8F9-FC9A-4143-8D6A-9F1F86288030}</Project>
+      <Name>Challenge 2-Komodo Claims DeptPOCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Challenge 2-Komodo Claims DeptRepository\Challenge 2-Komodo Claims DeptRepository.csproj">
+      <Project>{b0211a70-9194-46a5-bde7-2febd620876e}</Project>
+      <Name>Challenge 2-Komodo Claims DeptRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
