@@ -30,19 +30,19 @@ namespace Challenge_2_Komodo_Claims_DeptRepository
         //  See assignment for details
         //
 
-        private List<Claim> _listOfClaims = new List<Claim>();
+        private Queue<Claim> _claim = new Queue<Claim>();
 
         //Create
         public  void AddClaimToList(Claim claim)
         {
-            _listOfClaims.Add(claim);
+            _claim.Enqueue(claim);
         }
 
 
         //Read
-        public List<Claim> GetClaimsList()
+        public Queue<Claim> GetClaimsList()
         {
-            return _listOfClaims;
+            return _claim;
         }
 
 
@@ -85,10 +85,10 @@ namespace Challenge_2_Komodo_Claims_DeptRepository
                 return false;
             }
 
-            int initialCount = _listOfClaims.Count;
-            _listOfClaims.Remove(claim);
+            int initialCount = _claim.Count;
+            _claim.Dequeue();
 
-            if (initialCount > _listOfClaims.Count)
+            if (initialCount > _claim.Count)
             {
                 return true;
             }
@@ -102,7 +102,7 @@ namespace Challenge_2_Komodo_Claims_DeptRepository
         //Helper
         public Claim GetClaimByClaimID (int claimID)
         {
-            foreach(Claim Claim in _listOfClaims)
+            foreach(Claim Claim in _claim)
             {
                 if(Claim.ClaimID == claimID)
                 {

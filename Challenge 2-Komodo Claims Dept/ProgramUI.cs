@@ -56,14 +56,6 @@ namespace Challenge_2_Komodo_Claims_Dept
                         ProcessNextClaim();
                         break;
                     case "4":
-                        //Update Existing Claim
-                        UpdateClaim();
-                        break;
-                    case "5":
-                        //Delete Existing Claim
-                        DeleteExistingClaim();
-                        break;
-                    case "6":
                         //Exit
                         Console.WriteLine("Claims are complete. Go forth, and be destressed!");
                         keepRunning = false;
@@ -91,43 +83,134 @@ namespace Challenge_2_Komodo_Claims_Dept
             string claimIDAsString = Console.ReadLine();
             newClaim.ClaimID = int.Parse(claimIDAsString);
 
-            //Meal Name
-            Console.WriteLine("Enter the Meal Name:");
-            newMenuItem.MealName = Console.ReadLine();
+            //ClaimType
+            Console.WriteLine("Enter the Number for the Type of Claim it is\n" +
+                    "1. Car\n" +
+                    "2. Home\n" +
+                    "3. Theft");
+            string claimTypeAsString = Console.ReadLine();
+            newClaim.TypeOfClaim = int.Parse(claimTypeAsString);
+                      
 
             //Description
-            Console.WriteLine("Enter the Description of Meal:");
-            newMenuItem.Description = Console.ReadLine();
+            Console.WriteLine("Enter the Description of Claim:");
+            newClaim.Description = Console.ReadLine();
 
-            //List of Ingredients  new List<string>()
-            List<string> listOfIngredients = new List<string>();
-            bool isDone = true;
-            do
+            //ClaimAmount
+            Console.WriteLine("Enter Amount of Claim");
+
+            //Date of Incident
+            bool dateOfIncident = false;
+            while (!dateOfIncident);
             {
-                Console.WriteLine("Enter an ingredient or 'done' if there are no more ingredient to be added:");
-                var ingredient = Console.ReadLine();
-                if (ingredient.ToLower() != "done")
+                Console.WriteLine("Enter Date of Incident");
+                string mDateTime = Console.ReadLine();
+                if (!DateTime.TryParse(mDateTime, out DateTime incidentDate))
                 {
-                    listOfIngredients.Add(ingredient);
-                    Console.WriteLine("Ingredient added to List");
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    continue;
+                    Console.WriteLine("Not a Valid Claim");
                 }
-                isDone = false;
-            } while (isDone);
-            Console.WriteLine("Ingredients list now complete.");
+                else
+                {
+                    newClaim.DateOfIncident = incidentDate;
+                    dateOfIncident = true;
+                }
+                //Date of Claim
 
+                bool dateOfClaim = false;
+                while (!dateOfClaim)
+                {
+                    Console.WriteLine("Enter Date of Claim");
+                    string inputDateOfClaim = Console.ReadLine();
+                    if (!DateTime.TryParse(inputDateOfClaim, out DateTime newdateOfClaim))
+                    {
+                        Console.WriteLine("Not a valid input");
+                    }
+                    else
+                    {
+                        newClaim.DateOfClaim = newdateOfClaim;
+                        dateOfClaim = true;
+                    }
+                }
+            }
 
-            newMenuItem.ListOfIngredients = listOfIngredients;
+            //IsValid
+            bool isValid = false;
+            while (!isValid)
+            {
+                bool isNotValid = false;
+                var timeSpan2 = 30;
+                var validClaim = newClaim.DateOfClaim - newClaim.DateOfIncident;
+                var timeSpan = validClaim.TotalDays;
+                if (timeSpan > timeSpan2)
+                {
+                    newClaim.IsValid = isNotValid;
+                    isValid = true;
+                }
+            }
 
-            //Price
-            Console.WriteLine("Enter Price of Meal:");
-            string priceAsString = Console.ReadLine();
-            newMenuItem.Price = double.Parse(priceAsString);
-
-            _itemRepo.AddMenuItemToList(newMenuItem);
-            Console.WriteLine("Menu Item now Added.");
+            _claimRepo.AddClaimToList(newClaim);
+            Console.WriteLine("Claim now Added.");
         }
+
+        //ViewAllClaims
+        private void DisplayAllClaims()
+        {
+            Console.Clear();
+            Queue<Claim> claims = _claimRepo.GetClaimsList();
+            string[] headerColumns = { "Claim ID", "Claim Type", "Claim Description", "Claim Amount", "Date of Incident", "Date of Claim", "IsValidClaim" };
+            Console.WriteLine("{0,10} {1,20} {2,30} {4,40} {5,25} {6, 35}", headerColumns[0], headerColumns[1], headerColumns[2], headerColumns[3], headerColumns[4], headerColumns[5], headerColumns[6] );
+
+            foreach (var claim in _claimRepo)
+            {
+                int claimID = claim.ClaimID;
+                Claim.ClaimType type = claim.TypeOfClaim;
+                string description = claim.Description;
+                decimal amountOfClaim = claim.ClaimAmount;
+                DateTime dateOfIncident = claim.DateOfIncident;
+                DateTime dateOfClaim = claim.DateOfClaim;
+                bool isValid = claim.IsValid;
+                Console.WriteLine($"{claimID,10}, {type,20} {description,30} {amountOfClaim,20} {dateOfIncident,30} {isValid,20}");
+            }
+        }
+
+        //Process Next Claim
+        private void ProcessNextClaim()
+        {
+            Queue<Claim> claims = _claimRepo.GetClaimsList();
+            Claim claim = claims.Peek();
+            Console.WriteLine($"Claim ID: {claim.ClaimID}\n" +
+                $"Claim Type: {claim.TypeOfClaim}\n" +
+                $"Description: {claim.Description}\n" +
+                $"Amount of Claim: {claim.ClaimAmount}\n" +
+                $"Date of Incident: {claim.DateOfIncident}\n" +
+                $"Date of Claim: {claim.DateOfClaim}|n" +
+                $"Is this a Valid Claim? {claim.IsValid} ");
+            string input = Console.ReadLine();
+            if (input == "y" || input == "Y")
+            {
+                claims.Dequeue();
+                Menu();
+            }
+            else if (input == "n" || input == "N")
+            {
+                Menu();
+            }
+            else
+            {
+                Console.WriteLine("Please Enter a Valid Response");
+            }
+        }
+
+        private void SeedList()
+        {
+            Claim claim1 = new Claim(1, Claim.ClaimType.Car, "Frontend Collision", 4000, DateTime.Parse(2021 / 03 / 02), DateTime.Parse(2020 / 02 / 27), true);
+            Claim claim2 = new Claim(21, Claim.ClaimType.Home, "Hail Damange on Roof", 9000, DateTime.Parse(2020 / 12 / 25), DateTime.Parse(2020 / 12 / 27), true);
+            Claim claim3 = new Claim(56, Claim.ClaimType.Car, "BreakIn, Driver Side Door", 1200, DateTime.Parse(2021 / 01 / 02), DateTime.Parse(2021 / 02 / 15), false);
+
+            _claimRepo.AddClaimToList(claim1);
+            _claimRepo.AddClaimToList(claim2);
+            _claimRepo.AddClaimToList(claim3);
+        }
+
     }
 }
